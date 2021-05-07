@@ -20,4 +20,4 @@ function allPaidInEur(xml) {
 exports.fn = allPaidInEur
 
 const result = allPaidInEur(xml)
-outputResult(result)
+outputResult(module, result)

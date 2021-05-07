@@ -1,6 +1,5 @@
-function outputIfRunAsScript(text) {
-    if (require.main !== module) { return }
-
+function outputIfRunAsScript(m, text) {
+    if (require.main !== m) { return }
     console.log(text)
 }
 

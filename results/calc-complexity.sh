@@ -27,7 +27,7 @@ function calculate_complexity_js_pipeline () {
 	task_name=$1
 
 	results_file="results/$(basename $task_name)_steps.tsv"
-	echo > "$results_file"
+	printf "" > "$results_file"
 
 	js_steps=$(ls $task_name/step-*.js | sort | tr '\n' ' ')
 	for js_step in $js_steps ; do

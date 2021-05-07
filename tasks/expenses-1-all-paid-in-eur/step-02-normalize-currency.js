@@ -15,4 +15,4 @@ function normalizeCurrency(xml) {
 exports.fn = normalizeCurrency
 
 const result = normalizeCurrency(xml)
-outputResult(result.outerHTML)
+outputResult(module, result.outerHTML)

@@ -13,4 +13,4 @@ function addDefaultCurrency(xml) {
 exports.fn = addDefaultCurrency
 
 const result = addDefaultCurrency(xml)
-outputResult(result.outerHTML)
+outputResult(module, result.outerHTML)
