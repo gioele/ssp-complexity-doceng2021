@@ -1,0 +1,4 @@
+
+tasks/expenses-1-all-paid-in-eur/step-01-add-default-currency.xsl	42
+tasks/expenses-1-all-paid-in-eur/step-02-normalize-currency.xsl	42
+tasks/expenses-1-all-paid-in-eur/step-03-select-all-paid-in-eur.xsl	42

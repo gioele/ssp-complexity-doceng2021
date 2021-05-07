@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -eu
+
+js_file=$1
+data_file=${2:--}
+
+TOOLS_DIR=$(readlink -f $(dirname $0)) # FIXME
+export NODE_PATH=$TOOLS_DIR/node_modules
+node "$js_file" "$data_file"
