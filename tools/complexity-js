@@ -1,3 +1,23 @@
 #!/usr/bin/env bash
 
-echo "42"
+set -eu
+
+js_file=$1
+
+TOOLS_DIR=$(readlink -f $(dirname $0)) # FIXME
+export NODE_PATH=$TOOLS_DIR/node_modules:.
+cat <<EOF | node - "$js_file"
+const escomplex = require('typhonjs-escomplex')
+
+function complexity(func) {
+    const complexities = escomplex.analyzeModule(func.toString())
+    const cc = complexities.methods[0].cyclomatic
+    return cc
+}
+
+const path = "$js_file"
+const { fn } = require(path)
+const cc = complexity(fn)
+console.log(cc)
+
+EOF

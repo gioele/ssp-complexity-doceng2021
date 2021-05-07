@@ -1,4 +1,5 @@
 const { xml } = require("../common/input-data")
+const { outputResult } = require("../common/utils")
 
 function normalizeCurrency(xml) {
     for (let elem of xml.getElementsByTagName("*")) {
@@ -11,5 +12,7 @@ function normalizeCurrency(xml) {
     return xml
 }
 
+exports.fn = normalizeCurrency
+
 const result = normalizeCurrency(xml)
-console.log(result.outerHTML)
+outputResult(result.outerHTML)

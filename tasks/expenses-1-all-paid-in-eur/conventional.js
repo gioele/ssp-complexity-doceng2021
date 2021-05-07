@@ -1,4 +1,5 @@
 const { xml } = require("../common/input-data")
+const { outputResult } = require("../common/utils")
 
 function allPaidInEur(xml) {
     const matched = []
@@ -16,5 +17,7 @@ function allPaidInEur(xml) {
     return matched_list
 }
 
+exports.fn = allPaidInEur
+
 const result = allPaidInEur(xml)
-console.log(result)
+outputResult(result)
