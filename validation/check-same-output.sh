@@ -12,7 +12,7 @@ function main () {
 		check_output_js_pipeline $task_name "input-data/expenses.xml"
 	done
 
-	exit 2 # TODO other tasks
+	# TODO other tasks
 }
 
 function check_output_xslt () {

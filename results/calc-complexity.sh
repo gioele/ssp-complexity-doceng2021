@@ -12,7 +12,7 @@ function main () {
 		calculate_complexity_js_pipeline $task_name
 	done
 
-	exit 2 # TODO other tasks
+	# TODO other tasks
 }
 
 function calculate_complexity_js () {
