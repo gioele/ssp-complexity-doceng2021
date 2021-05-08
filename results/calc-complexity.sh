@@ -4,6 +4,8 @@ set -euo pipefail
 
 cd $(dirname $0)/..
 
+HEADERS="STEP_NAME\tCYC_COMPLEXITY"
+
 function main () {
 	for task_name in tasks/expenses-* ; do
 		calculate_complexity_js $task_name
@@ -20,14 +22,15 @@ function calculate_complexity_js () {
 	c13y_single=$(tools/complexity-js $js_single)
 
 	results_file="results/$(basename $task_name)_conventional.tsv"
-	printf "${js_single}\t${c13y_single}\n" > "$results_file"
+	printf "${HEADERS}\n" > "$results_file"
+	printf "${js_single}\t${c13y_single}\n" >> "$results_file"
 }
 
 function calculate_complexity_js_pipeline () {
 	task_name=$1
 
 	results_file="results/$(basename $task_name)_steps.tsv"
-	printf "" > "$results_file"
+	printf "${HEADERS}\n" > "$results_file"
 
 	js_steps=$(ls $task_name/step-*.xsl.js | sort | tr '\n' ' ')
 	for js_step in $js_steps ; do
