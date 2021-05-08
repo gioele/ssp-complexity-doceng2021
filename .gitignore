@@ -1,3 +1,4 @@
+*.swp
 /results/*.tsv
 /.idea/
 /tools/node_modules/
