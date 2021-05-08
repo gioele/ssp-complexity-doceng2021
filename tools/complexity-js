@@ -9,15 +9,15 @@ export NODE_PATH=$TOOLS_DIR/node_modules:.
 cat <<EOF | node - "$js_file"
 const escomplex = require('typhonjs-escomplex')
 
-function complexity(func) {
+function cyc_complexity(func) {
     const complexities = escomplex.analyzeModule(func.toString())
-    const cc = complexities.methods[0].cyclomatic
-    return cc
+    const cyc = complexities.methods[0].cyclomatic
+    return cyc
 }
 
 const path = "$js_file"
 const { fn } = require(path)
-const cc = complexity(fn)
-console.log(cc)
+const cyc = cyc_complexity(fn)
+console.log(cyc)
 
 EOF
