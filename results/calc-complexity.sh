@@ -16,7 +16,7 @@ function main () {
 function calculate_complexity_js () {
 	task_name=$1
 
-	js_single="$task_name/conventional.js"
+	js_single="$task_name/conventional.xsl.js"
 	c13y_single=$(tools/complexity-js $js_single)
 
 	results_file="results/$(basename $task_name)_conventional.tsv"
@@ -29,7 +29,7 @@ function calculate_complexity_js_pipeline () {
 	results_file="results/$(basename $task_name)_steps.tsv"
 	printf "" > "$results_file"
 
-	js_steps=$(ls $task_name/step-*.js | sort | tr '\n' ' ')
+	js_steps=$(ls $task_name/step-*.xsl.js | sort | tr '\n' ' ')
 	for js_step in $js_steps ; do
 		c13y_step=$(tools/complexity-js $js_step)
 		printf "${js_step}\t${c13y_step}\n" >> "$results_file"

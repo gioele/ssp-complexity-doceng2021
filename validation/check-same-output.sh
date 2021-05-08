@@ -43,7 +43,7 @@ function check_output_js () {
 	task_name=$1
 	data_file=$2
 
-	js_single="$task_name/conventional.js"
+	js_single="$task_name/conventional.xsl.js"
 	output_single=$(tools/js $js_single $data_file)
 
 	check_output "$task_name" "$output_single" "$js_single"
@@ -53,7 +53,7 @@ function check_output_js_pipeline () {
 	task_name=$1
 	data_file=$2
 
-	js_steps=$(ls $task_name/step-*.js | sort | tr '\n' ' ')
+	js_steps=$(ls $task_name/step-*.xsl.js | sort | tr '\n' ' ')
 	output=$(cat $data_file)
 	for js_step in $js_steps ; do
 		echo $js_step
