@@ -4,6 +4,8 @@ set -euo pipefail
 
 cd $(dirname $0)/..
 
+is_debug=${DEBUG:-}
+
 function main () {
 	for task_name in ${@:-tasks/expenses-*} ; do
 		check_output_xslt $task_name "input-data/expenses.xml"
@@ -34,6 +36,7 @@ function check_output_xslt_pipeline () {
 	for js_step in $js_steps ; do
 		echo $js_step
 		output=$(echo "$output" | tools/xslt $js_step)
+		log_debug $output
 	done
 
 	check_output "$task_name" "$output" "$js_steps"
@@ -58,6 +61,7 @@ function check_output_js_pipeline () {
 	for js_step in $js_steps ; do
 		echo $js_step
 		output=$(echo "$output" | tools/js $js_step)
+		log_debug $output
 	done
 
 	check_output "$task_name" "$output" "$js_steps"
@@ -79,4 +83,12 @@ function check_output () {
 	fi
 }
 
-main
+function log_debug() {
+  if [ -n "${is_debug:-}" ]; then
+    echo -----
+    echo $@
+ 		echo -----
+  fi
+}
+
+main $@
