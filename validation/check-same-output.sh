@@ -7,12 +7,15 @@ cd $(dirname $0)/..
 is_debug=${DEBUG:-}
 
 function main () {
-	for task_name in ${@:-tasks/expenses-*} ; do
-		check_output_xslt $task_name "input-data/expenses.xml"
-		check_output_js $task_name "input-data/expenses.xml"
+  input_data=$1
+  shift
 
-		check_output_xslt_pipeline $task_name "input-data/expenses.xml"
-		check_output_js_pipeline $task_name "input-data/expenses.xml"
+	for task_name in ${@:-tasks/expenses-*} ; do
+		check_output_xslt $task_name $input_data
+		check_output_js $task_name $input_data
+
+		check_output_xslt_pipeline $task_name $input_data
+		check_output_js_pipeline $task_name $input_data
 	done
 
 	# TODO other tasks

@@ -9,8 +9,7 @@ check-env:
 	@[ -d ${NODE_MODULES} ] || (echo "WARN: node dependencies not installed, installing..." ; \
 		cd tools ; npm install )
 
-validation:
-	./validation/check-same-output.sh
+validation: validation-expenses validation-poem
 
 results:
 	./results/calc-complexity.sh
@@ -18,4 +17,10 @@ results:
 graphs:
 	./graphs/gen-graphs.sh
 
-.PHONY: all check-env validation results
+validation-expenses:
+	./validation/check-same-output.sh input-data/expenses.xml tasks/expenses-*
+
+validation-poem:
+	./validation/check-same-output.sh input-data/poem.xml tasks/poem-*
+
+.PHONY: all check-env validation results validation-expenses validation-poem
