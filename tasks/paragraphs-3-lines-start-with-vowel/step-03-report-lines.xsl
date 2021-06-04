@@ -3,6 +3,6 @@
     <xsl:output omit-xml-declaration="yes" method="text"/>
 
     <xsl:template match="/">
-        <xsl:value-of select="string-join(//line[@starts-with-vowel = 'true']/normalize-space(.), '; ')"/>
+        <xsl:value-of select="string-join(//line[@starts-with-vowel = 'true']/@n, '; ')"/>
     </xsl:template>
 </xsl:stylesheet>
