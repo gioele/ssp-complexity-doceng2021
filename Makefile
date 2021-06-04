@@ -9,7 +9,7 @@ check-env:
 	@[ -d ${NODE_MODULES} ] || (echo "WARN: node dependencies not installed, installing..." ; \
 		cd tools ; npm install )
 
-validation: validation-expenses validation-pargraphs
+validation: validation-expenses validation-paragraphs
 
 results:
 	./results/calc-complexity.sh
