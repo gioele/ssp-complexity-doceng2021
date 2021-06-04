@@ -3,6 +3,6 @@
   <xsl:output omit-xml-declaration="yes" method="text"/>
 
   <xsl:template match="/">
-    <xsl:value-of select="string-join(//line/count(w[string-length(replace(., '-', ''))>3]), '; ')"/>
+    <xsl:value-of select="string-join(//line/count(w[string-length(replace(., '-', '')) > 2]), '; ')"/>
   </xsl:template>
 </xsl:stylesheet>
