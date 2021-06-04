@@ -4,7 +4,7 @@
 
     <xsl:import href="../common/identity.xsl"/>
 
-    <xsl:template match="w[last()][ends-with(., '-')]">
+    <xsl:template match="w[ends-with(., '-')]">
         <xsl:copy>
             <xsl:variable name="cur" select="replace(., '-', '')"/>
             <xsl:variable name="next" select="replace(following::w[1], '-', '')"/>
@@ -12,5 +12,5 @@
         </xsl:copy>
     </xsl:template>
 
-    <xsl:template match="w[1][starts-with(., '-')]"/>
+    <xsl:template match="w[ends-with(./preceding::w[1], '-')]"/>
 </xsl:stylesheet>
