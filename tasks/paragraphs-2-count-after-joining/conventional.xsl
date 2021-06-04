@@ -6,19 +6,12 @@
     <xsl:value-of select="string-join(
         //line/count(
             ./w[(
-                if (not(preceding-sibling::w)) then
-                    if (starts-with(., '-')) then 0 else string-length(.)
-                else (
-                    if (following-sibling::w) then
-                        string-length(.)
-                else (
-                     if (ends-with(., '-')) then
-                         (string-length(.)-1)+(string-length(following::w[1])-1)
-                     else
-                         string-length(.)
-                )
-            )
-        )> 3 ]),
+               if (preceding::w[1]/ends-with(., '-')) then 0
+                else if (ends-with(., '-')) then
+                  (string-length(.) - 1) + string-length(following::w[1])
+                else
+                  string-length(.)
+         ) > 2 ]),
     '; ')"/>
   </xsl:template>
 </xsl:stylesheet>
