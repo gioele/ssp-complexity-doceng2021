@@ -11,7 +11,7 @@ function countLongWords(xml) {
                 if (child.tagName === "w") {
                     for (let attr of child.attributes) {
                         if (attr.name === "length") {
-                            if (attr.value > 2) {
+                            if (parseInt(attr.value) > 2) {
                                 longWords.push(child.textContent)
                             }
                         }
