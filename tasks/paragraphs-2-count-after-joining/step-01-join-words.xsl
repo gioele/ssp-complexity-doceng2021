@@ -7,7 +7,7 @@
     <xsl:template match="w[ends-with(., '-')]">
         <xsl:copy>
             <xsl:variable name="cur" select="replace(., '-', '')"/>
-            <xsl:variable name="next" select="replace(following::w[1], '-', '')"/>
+            <xsl:variable name="next" select="following::w[1]"/>
             <xsl:value-of select="concat($cur, $next)"/>
         </xsl:copy>
     </xsl:template>
