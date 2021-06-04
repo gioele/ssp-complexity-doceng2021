@@ -4,29 +4,18 @@
 
   <xsl:template match="/">
     <xsl:value-of select="string-join(
-      //line[(
-                if (starts-with(w[1], '-')) then (w[2]) else (w[1])
-              )[
-                starts-with(., 'a') or starts-with(., 'e') or starts-with(., 'i') or starts-with(., 'o') or starts-with(., 'u')
-               ]
-            ]/(
-                string-join((
-                    w!(
-                        if (not(preceding-sibling::w)) then
-                            if (starts-with(., '-')) then () else text()
-                        else (
-                            if (following-sibling::w) then
-                                text()
-                            else (
-                                if (ends-with(., '-')) then
-                                    concat(replace(text(), '-', ''), replace(following::w[1], '-', ''))
-                                else
-                                    text()
-                            )
-                        )
+      //line[
+        substring(
+          string-join((
+                    w ! (
+                        if (preceding::w[1]/ends-with(., '-')) then ()
+                        else if (ends-with(., '-')) then
+                          replace(., '-', '') || following::w[1]
+                        else .
                     )
-                ), ' ')
-           ),
-      '; ')"/>
+          ), ' '),
+          1, 1
+        ) = ('a', 'e', 'i', 'o', 'u')
+      ]/data(@n), '; ')"/>
   </xsl:template>
 </xsl:stylesheet>
