@@ -7,7 +7,7 @@
     <xsl:template match="line">
         <xsl:copy>
             <xsl:attribute name="starts-with-vowel">
-                <xsl:value-of select="w[1]/(starts-with(., 'a') or starts-with(., 'e') or starts-with(., 'i') or starts-with(., 'o') or starts-with(., 'u'))"/>
+                <xsl:value-of select="substring(w[1], 1, 1) = ('a', 'e', 'i', 'o', 'u')"/>
             </xsl:attribute>
             <xsl:apply-templates select="@*|node()"/>
         </xsl:copy>
