@@ -1,7 +1,7 @@
 const { xml } = require("../common/input-data")
 const { outputResult } = require("../common/utils")
 
-function countLongWords(xml) {
+function reportLines(xml) {
     const lineNumbersStartingWithVowel = []
 
     for (let elem of xml.getElementsByTagName("*")) {
@@ -30,7 +30,7 @@ function countLongWords(xml) {
 
 }
 
-exports.fn = countLongWords
+exports.fn = reportLines
 
-const result = countLongWords(xml)
+const result = reportLines(xml)
 outputResult(module, result)

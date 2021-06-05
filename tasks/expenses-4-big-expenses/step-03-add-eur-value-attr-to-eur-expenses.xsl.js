@@ -1,7 +1,7 @@
 const { xml } = require("../common/input-data")
 const { outputResult } = require("../common/utils")
 
-function selectAllPaidInEur(xml) {
+function addEurValueAttrForEurExpenses(xml) {
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
             let currency = null
@@ -26,7 +26,7 @@ function selectAllPaidInEur(xml) {
     return xml
 }
 
-exports.fn = selectAllPaidInEur
+exports.fn = addEurValueAttrForEurExpenses
 
-const result = selectAllPaidInEur(xml)
+const result = addEurValueAttrForEurExpenses(xml)
 outputResult(module, result.outerHTML)

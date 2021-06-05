@@ -1,7 +1,7 @@
 const { xml } = require("../common/input-data")
 const { outputResult } = require("../common/utils")
 
-function selectAllPaidInEur(xml) {
+function selectBigExpenses(xml) {
     const matched_ids = []
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
@@ -29,7 +29,7 @@ function selectAllPaidInEur(xml) {
     return matched_ids_list
 }
 
-exports.fn = selectAllPaidInEur
+exports.fn = selectBigExpenses
 
-const result = selectAllPaidInEur(xml)
+const result = selectBigExpenses(xml)
 outputResult(module, result)

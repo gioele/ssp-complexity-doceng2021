@@ -1,7 +1,7 @@
 const { xml } = require("../common/input-data")
 const { outputResult } = require("../common/utils")
 
-function calculateLength(xml) {
+function markLines(xml) {
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "line") {
             for (let child of elem.childNodes) {
@@ -24,7 +24,7 @@ function calculateLength(xml) {
     return xml
 }
 
-exports.fn = calculateLength
+exports.fn = markLines
 
-const result = calculateLength(xml)
+const result = markLines(xml)
 outputResult(module, result.outerHTML)

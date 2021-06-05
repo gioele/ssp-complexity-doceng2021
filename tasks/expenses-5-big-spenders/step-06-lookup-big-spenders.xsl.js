@@ -1,7 +1,7 @@
 const { xml } = require("../common/input-data")
 const { outputResult } = require("../common/utils")
 
-function selectAllPaidInEur(xml) {
+function lookupBigSpenders(xml) {
     const bigSpenderIDs = []
     for (let elem of xml.getElementsByTagName("*")) {
         for (let attr of elem.attributes) {
@@ -35,7 +35,7 @@ function selectAllPaidInEur(xml) {
     return bigSpenderList
 }
 
-exports.fn = selectAllPaidInEur
+exports.fn = lookupBigSpenders
 
-const result = selectAllPaidInEur(xml)
+const result = lookupBigSpenders(xml)
 outputResult(module, result)

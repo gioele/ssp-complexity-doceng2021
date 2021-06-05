@@ -1,7 +1,7 @@
 const { xml } = require("../common/input-data")
 const { outputResult } = require("../common/utils")
 
-function selectAllPaidInEur(xml) {
+function sumExpenses(xml) {
     let sum = 0
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
@@ -19,7 +19,7 @@ function selectAllPaidInEur(xml) {
     return sum
 }
 
-exports.fn = selectAllPaidInEur
+exports.fn = sumExpenses
 
-const result = selectAllPaidInEur(xml)
+const result = sumExpenses(xml)
 outputResult(module, result)
