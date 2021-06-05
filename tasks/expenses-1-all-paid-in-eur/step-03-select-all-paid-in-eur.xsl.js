@@ -5,9 +5,19 @@ function selectAllPaidInEur(xml) {
     const matched_ids = []
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-            if (elem.getAttribute("currency") === "EUR") {
-                const id = elem.getAttribute("id")
-                matched_ids.push(id)
+            let currency = null
+            for (let attr of elem.attributes) {
+                if (attr.name === "currency") {
+                    currency = attr.value
+                }
+            }
+
+            if (currency === "EUR") {
+                for (let attr of elem.attributes) {
+                    if (attr.name === "id") {
+                        matched_ids.push(attr.value)
+                    }
+                }
             }
         }
     }

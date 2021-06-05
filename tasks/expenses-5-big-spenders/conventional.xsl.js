@@ -6,11 +6,24 @@ function getBigSpenders(xml) {
     let bigSpenderIDs = []
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-            const value = parseInt(elem.getAttribute("value"))
+            let value = 0
+            for (let attr of elem.attributes) {
+                if (attr.name === "value") {
+                    value = parseFloat(attr.value)
+                }
+            }
+
+            let currency = null
+            for (let attr of elem.attributes) {
+                if (attr.name === "currency") {
+                    currency = attr.value.toUpperCase()
+                }
+            }
+
+
             let valueInEur;
 
-            if (!elem.hasAttribute("currency") ||
-                elem.getAttribute("currency").toUpperCase() === "EUR")
+            if (!currency || currency === "EUR")
             {
                 valueInEur = value
             } else {
@@ -18,8 +31,11 @@ function getBigSpenders(xml) {
             }
 
             if (valueInEur >= 100) {
-                const spenderId = elem.getAttribute("person")
-                bigSpenderIDs.push(spenderId)
+                for (let attr of elem.attributes) {
+                    if (attr.name === "person") {
+                        bigSpenderIDs.push(attr.value)
+                    }
+                }
             }
         }
     }
@@ -27,10 +43,19 @@ function getBigSpenders(xml) {
     const bigSpenderNames = []
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "person") {
-            const spenderId = elem.getAttribute("id")
+            let spenderId = null
+            for (let attr of elem.attributes) {
+                if (attr.name === "id") {
+                    spenderId = attr.value
+                }
+            }
+
             if (bigSpenderIDs.includes(spenderId)) {
-                const spenderName = elem.getAttribute("name")
-                bigSpenderNames.push(spenderName)
+                for (let attr of elem.attributes) {
+                    if (attr.name === "name") {
+                        bigSpenderNames.push(attr.value)
+                    }
+                }
             }
         }
     }

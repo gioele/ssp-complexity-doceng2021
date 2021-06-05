@@ -6,10 +6,21 @@ function sumOfAllExpenses(xml) {
     let sum = 0
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-            const value = parseInt(elem.getAttribute("value"))
+            let value = 0
+            for (let attr of elem.attributes) {
+                if (attr.name === "value") {
+                    value = parseFloat(attr.value)
+                }
+            }
 
-            if (!elem.hasAttribute("currency") ||
-                elem.getAttribute("currency").toUpperCase() === "EUR")
+            let currency = null
+            for (let attr of elem.attributes) {
+                if (attr.name === "currency") {
+                    currency = attr.value.toUpperCase()
+                }
+            }
+
+            if (!currency || currency === "EUR")
             {
                 sum += value
             } else {

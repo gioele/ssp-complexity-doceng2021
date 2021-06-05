@@ -5,11 +5,20 @@ function allPaidInEur(xml) {
     const matched = []
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-            if (!elem.hasAttribute("currency") ||
-                elem.getAttribute("currency").toUpperCase() === "EUR")
+            let currency = null
+            for (let attr of elem.attributes) {
+                if (attr.name === "currency") {
+                    currency = attr.value.toUpperCase()
+                }
+            }
+
+            if (!currency || currency === "EUR")
             {
-                const id = elem.getAttribute("id")
-                matched.push(id)
+                for (let attr of elem.attributes) {
+                    if (attr.name === "id") {
+                        matched.push(attr.value)
+                    }
+                }
             }
         }
     }

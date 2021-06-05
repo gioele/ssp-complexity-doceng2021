@@ -5,8 +5,14 @@ function selectAllPaidInEur(xml) {
     let sum = 0
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-           const value = parseFloat(elem.getAttribute("value-in-eur"))
-           sum += value
+            let value = 0
+            for (let attr of elem.attributes) {
+                if (attr.name === "value-in-eur") {
+                    value = parseFloat(attr.value)
+                }
+            }
+
+            sum += value
         }
     }
 

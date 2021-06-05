@@ -4,9 +4,21 @@ const { outputResult } = require("../common/utils")
 function selectAllPaidInEur(xml) {
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-            if (elem.getAttribute("currency") === "EUR") {
-                const value = elem.getAttribute("value")
-                elem.setAttribute("value-in-eur", value)
+            let currency = null
+            for (let attr of elem.attributes) {
+                if (attr.name === "currency") {
+                    currency = attr.value
+                }
+            }
+
+            if (currency === "EUR") {
+                for (let attr of elem.attributes) {
+                    if (attr.name === "value") {
+                        let value = parseFloat(attr.value)
+                        elem.setAttribute("value-in-eur", value)
+
+                    }
+                }
             }
         }
     }

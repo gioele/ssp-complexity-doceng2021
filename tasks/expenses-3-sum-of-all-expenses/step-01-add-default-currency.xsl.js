@@ -3,8 +3,16 @@ const { outputResult } = require("../common/utils")
 
 function addDefaultCurrency(xml) {
     for (let elem of xml.getElementsByTagName("*")) {
-        if (elem.tagName === "expense" && !elem.hasAttribute("currency")) {
-            elem.setAttribute("currency", "EUR")
+        if (elem.tagName === "expense") {
+            let hasCurrency = false
+            for (let attr of elem.attributes) {
+                if (attr.name === "currency") {
+                    hasCurrency = true
+                }
+            }
+            if (!hasCurrency) {
+                elem.setAttribute("currency", "EUR")
+            }
         }
     }
     return xml

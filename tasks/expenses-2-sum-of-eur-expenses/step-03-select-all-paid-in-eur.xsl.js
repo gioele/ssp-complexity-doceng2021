@@ -4,8 +4,14 @@ const { outputResult } = require("../common/utils")
 function selectAllPaidInEur(xml) {
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-            if (elem.getAttribute("currency") !== "EUR") {
-                elem.remove()
+            let currency = null
+            for (let attr of elem.attributes) {
+                if (attr.name === "currency") {
+                    currency = attr.value
+                    if (currency !== "EUR") {
+                        elem.remove()
+                    }
+                }
             }
         }
     }

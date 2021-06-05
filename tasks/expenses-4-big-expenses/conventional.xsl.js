@@ -6,11 +6,24 @@ function selectBigExpenses(xml) {
     let matched = []
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-            const value = parseInt(elem.getAttribute("value"))
+            let value = 0
+            for (let attr of elem.attributes) {
+                if (attr.name === "value") {
+                    value = parseFloat(attr.value)
+                }
+            }
+
+            let currency = null
+            for (let attr of elem.attributes) {
+                if (attr.name === "currency") {
+                    currency = attr.value.toUpperCase()
+                }
+            }
+
+
             let valueInEur;
 
-            if (!elem.hasAttribute("currency") ||
-                elem.getAttribute("currency").toUpperCase() === "EUR")
+            if (!currency || currency === "EUR")
             {
                 valueInEur = value
             } else {
@@ -18,8 +31,11 @@ function selectBigExpenses(xml) {
             }
 
             if (valueInEur >= 100) {
-                const expenseId = elem.getAttribute("id")
-                matched.push(expenseId)
+                for (let attr of elem.attributes) {
+                    if (attr.name === "id") {
+                        matched.push(attr.value)
+                    }
+                }
             }
         }
     }

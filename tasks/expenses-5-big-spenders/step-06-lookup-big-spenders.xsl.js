@@ -4,17 +4,29 @@ const { outputResult } = require("../common/utils")
 function selectAllPaidInEur(xml) {
     const bigSpenderIDs = []
     for (let elem of xml.getElementsByTagName("*")) {
-        const spenderId = elem.getAttribute("person")
-        bigSpenderIDs.push(spenderId)
+        for (let attr of elem.attributes) {
+            if (attr.name === "person") {
+                bigSpenderIDs.push(attr.value)
+            }
+        }
     }
 
     const bigSpenderNames = []
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "person") {
-            const spenderId = elem.getAttribute("id")
+            let spenderId = null
+            for (let attr of elem.attributes) {
+                if (attr.name === "id") {
+                    spenderId = attr.value
+                }
+            }
+
             if (bigSpenderIDs.includes(spenderId)) {
-                const spenderName = elem.getAttribute("name")
-                bigSpenderNames.push(spenderName)
+                for (let attr of elem.attributes) {
+                    if (attr.name === "name") {
+                        bigSpenderNames.push(attr.value)
+                    }
+                }
             }
         }
     }
