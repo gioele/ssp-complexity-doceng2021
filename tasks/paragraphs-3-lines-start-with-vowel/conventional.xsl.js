@@ -47,12 +47,8 @@ function linesStartWithVowel(xml) {
             }
             const lineText = fullWords.join(" ")
             if (["a", "e", "i", "o", "u"].includes(lineText.substring(0, 1))) {
-                for (attrib of elem.attributes) {
-                    if (attrib.name === "n") {
-                        lineNumbersStartingWithVowel.push(attrib.value)
-                        break
-                    }
-                }
+                const lineNo = elem.getAttribute("n")
+                lineNumbersStartingWithVowel.push(lineNo)
             }
         }
     }

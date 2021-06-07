@@ -9,12 +9,10 @@ function countLongWords(xml) {
             let longWords = []
             for (let child of elem.childNodes) {
                 if (child.tagName === "w") {
-                    for (let attr of child.attributes) {
-                        if (attr.name === "length") {
-                            if (parseInt(attr.value) > 2) {
-                                longWords.push(child.textContent)
-                            }
-                        }
+                    const length = parseInt(child.getAttribute("length"))
+                    if (length > 2) {
+                        longWords.push(child.textContent)
+
                     }
                 }
             }

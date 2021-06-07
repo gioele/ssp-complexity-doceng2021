@@ -6,23 +6,11 @@ function reportLines(xml) {
 
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "line") {
-            for (let attr of elem.attributes) {
-                if (attr.name === "starts-with-vowel") {
-                    if (attr.value === "true") {
-
-                        for (let attr of elem.attributes) {
-                            if (attr.name === "n") {
-                                lineNumbersStartingWithVowel.push(attr.value)
-                                break
-                            }
-                        }
-
-                    }
-
-                    break
-                }
+            const startsWithVowel = elem.getAttribute("starts-with-vowel")
+            if (startsWithVowel === "true") {
+                const lineNo = elem.getAttribute("n")
+                lineNumbersStartingWithVowel.push(lineNo)
             }
-
         }
     }
 
