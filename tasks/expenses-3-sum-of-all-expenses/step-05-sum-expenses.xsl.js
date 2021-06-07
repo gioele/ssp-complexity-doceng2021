@@ -3,11 +3,9 @@ const { outputResult } = require("../common/utils")
 
 function sumExpenses(xml) {
     let sum = 0
-    for (let elem of xml.getElementsByTagName("*")) {
-        if (elem.tagName === "expense") {
-           const value = parseFloat(elem.getAttribute("value-in-eur"))
-           sum += value
-        }
+    for (let elem of xml.getElementsByTagName("expense")) {
+        const value = parseFloat(elem.getAttribute("value-in-eur"))
+        sum += value
     }
 
     return sum

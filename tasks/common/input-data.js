@@ -31,11 +31,11 @@ const result = parseXML(data)
 exports.data = data
 exports.xml = result.doc.documentElement
 exports.doc = result.doc
-exports.precedingNodes = function(node) {
-    const xPathResult = result.doc.evaluate("./preceding::*", node, null, result.window.XPathResult.ORDERED_NODE_ITERATOR_TYPE)
-    return xPathResultToNodeArray(xPathResult)
+exports.precedingNodes = function(node, name) {
+    const xPathResult = result.doc.evaluate(`./preceding::${name}`, node, null, result.window.XPathResult.ORDERED_NODE_ITERATOR_TYPE)
+    return xPathResultToNodeArray(xPathResult).reverse()
 }
-exports.followingNodes = function(node) {
-    const xPathResult =  result.doc.evaluate("./following::*", node, null, result.window.XPathResult.ORDERED_NODE_ITERATOR_TYPE)
+exports.followingNodes = function(node, name) {
+    const xPathResult =  result.doc.evaluate(`./following::${name}`, node, null, result.window.XPathResult.ORDERED_NODE_ITERATOR_TYPE)
     return xPathResultToNodeArray(xPathResult)
 }

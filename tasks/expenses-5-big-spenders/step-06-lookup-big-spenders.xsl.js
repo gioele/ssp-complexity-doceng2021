@@ -3,19 +3,17 @@ const { outputResult } = require("../common/utils")
 
 function lookupBigSpenders(xml) {
     const bigSpenderIDs = []
-    for (let elem of xml.getElementsByTagName("*")) {
+    for (let elem of xml.getElementsByTagName("expense")) {
         const spenderId = elem.getAttribute("person")
         bigSpenderIDs.push(spenderId)
     }
 
     const bigSpenderNames = []
-    for (let elem of xml.getElementsByTagName("*")) {
-        if (elem.tagName === "person") {
-            const spenderId = elem.getAttribute("id")
-            if (bigSpenderIDs.includes(spenderId)) {
-                const spenderName = elem.getAttribute("name")
-                bigSpenderNames.push(spenderName)
-            }
+    for (let elem of xml.getElementsByTagName("person")) {
+        const spenderId = elem.getAttribute("id")
+        if (bigSpenderIDs.includes(spenderId)) {
+            const spenderName = elem.getAttribute("name")
+            bigSpenderNames.push(spenderName)
         }
     }
 

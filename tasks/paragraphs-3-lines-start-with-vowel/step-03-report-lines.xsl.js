@@ -4,13 +4,11 @@ const { outputResult } = require("../common/utils")
 function reportLines(xml) {
     const lineNumbersStartingWithVowel = []
 
-    for (let elem of xml.getElementsByTagName("*")) {
-        if (elem.tagName === "line") {
-            const startsWithVowel = elem.getAttribute("starts-with-vowel")
-            if (startsWithVowel === "true") {
-                const lineNo = elem.getAttribute("n")
-                lineNumbersStartingWithVowel.push(lineNo)
-            }
+    for (let elem of xml.getElementsByTagName("line")) {
+        const startsWithVowel = elem.getAttribute("starts-with-vowel")
+        if (startsWithVowel === "true") {
+            const lineNo = elem.getAttribute("n")
+            lineNumbersStartingWithVowel.push(lineNo)
         }
     }
 

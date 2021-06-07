@@ -3,13 +3,11 @@ const { outputResult } = require("../common/utils")
 
 function selectBigExpenses(xml) {
     const matched_ids = []
-    for (let elem of xml.getElementsByTagName("*")) {
-        if (elem.tagName === "expense") {
-            const value = elem.getAttribute("value-in-eur")
-            if (value >= 100) {
-                const id = elem.getAttribute("id")
-                matched_ids.push(id)
-            }
+    for (let elem of xml.getElementsByTagName("expense")) {
+        const value = elem.getAttribute("value-in-eur")
+        if (value >= 100) {
+            const id = elem.getAttribute("id")
+            matched_ids.push(id)
         }
     }
 

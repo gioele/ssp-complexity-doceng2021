@@ -2,11 +2,9 @@ const { xml } = require("../common/input-data")
 const { outputResult } = require("../common/utils")
 
 function calculateLength(xml) {
-    for (let elem of xml.getElementsByTagName("*")) {
-        if (elem.tagName === "w") {
-            const word = elem.textContent
-            elem.setAttribute("length", word.length)
-        }
+    for (let elem of xml.getElementsByTagName("w")) {
+        const word = elem.textContent
+        elem.setAttribute("length", word.length)
     }
 
     return xml

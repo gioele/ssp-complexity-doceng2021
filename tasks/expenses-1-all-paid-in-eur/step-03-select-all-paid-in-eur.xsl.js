@@ -3,12 +3,10 @@ const { outputResult } = require("../common/utils")
 
 function selectAllPaidInEur(xml) {
     const matched_ids = []
-    for (let elem of xml.getElementsByTagName("*")) {
-        if (elem.tagName === "expense") {
-            if (elem.getAttribute("currency") === "EUR") {
-                const id = elem.getAttribute("id")
-                matched_ids.push(id)
-            }
+    for (let elem of xml.getElementsByTagName("expense")) {
+        if (elem.getAttribute("currency") === "EUR") {
+            const id = elem.getAttribute("id")
+            matched_ids.push(id)
         }
     }
 
