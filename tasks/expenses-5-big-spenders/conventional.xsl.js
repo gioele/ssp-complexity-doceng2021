@@ -6,24 +6,11 @@ function getBigSpenders(xml) {
     let bigSpenderIDs = []
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-            let value = 0
-            for (let attr of elem.attributes) {
-                if (attr.name === "value") {
-                    value = parseFloat(attr.value)
-                }
-            }
-
-            let currency = null
-            for (let attr of elem.attributes) {
-                if (attr.name === "currency") {
-                    currency = attr.value.toUpperCase()
-                }
-            }
-
-
+            const value = parseInt(elem.getAttribute("value"))
             let valueInEur;
 
-            if (!currency || currency === "EUR")
+            if (!elem.hasAttribute("currency") ||
+                elem.getAttribute("currency").toUpperCase() === "EUR")
             {
                 valueInEur = value
             } else {
@@ -31,11 +18,8 @@ function getBigSpenders(xml) {
             }
 
             if (valueInEur >= 100) {
-                for (let attr of elem.attributes) {
-                    if (attr.name === "person") {
-                        bigSpenderIDs.push(attr.value)
-                    }
-                }
+                const spenderId = elem.getAttribute("person")
+                bigSpenderIDs.push(spenderId)
             }
         }
     }
@@ -43,19 +27,10 @@ function getBigSpenders(xml) {
     const bigSpenderNames = []
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "person") {
-            let spenderId = null
-            for (let attr of elem.attributes) {
-                if (attr.name === "id") {
-                    spenderId = attr.value
-                }
-            }
-
+            const spenderId = elem.getAttribute("id")
             if (bigSpenderIDs.includes(spenderId)) {
-                for (let attr of elem.attributes) {
-                    if (attr.name === "name") {
-                        bigSpenderNames.push(attr.value)
-                    }
-                }
+                const spenderName = elem.getAttribute("name")
+                bigSpenderNames.push(spenderName)
             }
         }
     }

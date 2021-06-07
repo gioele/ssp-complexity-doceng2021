@@ -5,21 +5,10 @@ function selectBigExpenses(xml) {
     const matched_ids = []
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-            let value = 0
-            for (let attr of elem.attributes) {
-                if (attr.name === "value-in-eur") {
-                    value = parseFloat(attr.value)
-                }
-            }
-
+            const value = elem.getAttribute("value-in-eur")
             if (value >= 100) {
-                for (let attr of elem.attributes) {
-                    if (attr.name === "id") {
-                        const id = elem.getAttribute("id")
-                        matched_ids.push(id)
-                    }
-                }
-
+                const id = elem.getAttribute("id")
+                matched_ids.push(id)
             }
         }
     }

@@ -5,14 +5,8 @@ function sumExpenses(xml) {
     let sum = 0
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-            let value = 0
-            for (let attr of elem.attributes) {
-                if (attr.name === "value-in-eur") {
-                    value = parseFloat(attr.value)
-                }
-            }
-
-            sum += value
+           const value = parseFloat(elem.getAttribute("value-in-eur"))
+           sum += value
         }
     }
 

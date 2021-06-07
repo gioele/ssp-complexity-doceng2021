@@ -6,21 +6,8 @@ function addEurValueAttrForUsdExpenses(xml) {
 
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "expense") {
-            let currency = null
-            for (let attr of elem.attributes) {
-                if (attr.name === "currency") {
-                    currency = attr.value
-                }
-            }
-
-            if (currency !== "EUR") {
-                let value = 0
-                for (let attr of elem.attributes) {
-                    if (attr.name === "value") {
-                        value = parseFloat(attr.value)
-                    }
-                }
-
+            if (elem.getAttribute("currency") !== "EUR") {
+                const value = parseFloat(elem.getAttribute("value"))
                 const eurValue  = value * exchangeRate
                 elem.setAttribute("value-in-eur", eurValue)
             }

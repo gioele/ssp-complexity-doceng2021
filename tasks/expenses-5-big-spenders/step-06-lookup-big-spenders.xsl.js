@@ -4,29 +4,17 @@ const { outputResult } = require("../common/utils")
 function lookupBigSpenders(xml) {
     const bigSpenderIDs = []
     for (let elem of xml.getElementsByTagName("*")) {
-        for (let attr of elem.attributes) {
-            if (attr.name === "person") {
-                bigSpenderIDs.push(attr.value)
-            }
-        }
+        const spenderId = elem.getAttribute("person")
+        bigSpenderIDs.push(spenderId)
     }
 
     const bigSpenderNames = []
     for (let elem of xml.getElementsByTagName("*")) {
         if (elem.tagName === "person") {
-            let spenderId = null
-            for (let attr of elem.attributes) {
-                if (attr.name === "id") {
-                    spenderId = attr.value
-                }
-            }
-
+            const spenderId = elem.getAttribute("id")
             if (bigSpenderIDs.includes(spenderId)) {
-                for (let attr of elem.attributes) {
-                    if (attr.name === "name") {
-                        bigSpenderNames.push(attr.value)
-                    }
-                }
+                const spenderName = elem.getAttribute("name")
+                bigSpenderNames.push(spenderName)
             }
         }
     }
