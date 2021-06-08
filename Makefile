@@ -11,8 +11,7 @@ check-env:
 
 validation: validation-expenses validation-paragraphs
 
-results:
-	./results/calc-complexity.sh
+results: results-expenses results-paragraphs
 
 graphs:
 	./graphs/gen-graphs.sh
@@ -23,4 +22,11 @@ validation-expenses:
 validation-paragraphs:
 	./validation/check-same-output.sh input-data/paragraphs.xml tasks/paragraphs-*
 
-.PHONY: all check-env validation results validation-expenses validation-poem
+results-expenses:
+	./results/calc-complexity.sh tasks/expenses-*
+
+results-paragraphs:
+	./results/calc-complexity.sh tasks/paragraphs-*
+
+
+.PHONY: all check-env validation results validation-expenses validation-poem results-expenses results-paragraphs
