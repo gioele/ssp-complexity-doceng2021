@@ -7,7 +7,7 @@ cd $(dirname $0)/..
 HEADERS="STEP_NAME\tCYC_COMPLEXITY"
 
 function main () {
-	for task_name in ${@:-tasks/expenses-*} ; do
+	for task_name in ${@:-tasks/expenses-* tasks/paragraphs-*} ; do
 		calculate_complexity_js $task_name
 		calculate_complexity_js_pipeline $task_name
 	done
