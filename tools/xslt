@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -eu
+
+SAXON="java -jar $(dirname $0)/saxon-he-10.5.jar"
+
+transformation=$1
+data_file=${2:--}
+
+$SAXON -s:$data_file -xsl:$transformation || echo "XSLT ERROR"
