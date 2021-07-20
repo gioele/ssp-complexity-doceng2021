@@ -9,10 +9,12 @@ check-env:
 	@[ -d ${NODE_MODULES} ] || (echo "WARN: node dependencies not installed, installing..." ; \
 		cd tools ; npm install )
 
-validation: validation-expenses
+validation: validation-expenses validation-paragraphs
 
 validation-expenses:
 	./validation/check-same-output.sh input-data/expenses.xml tasks/expenses-*
 
+validation-paragraphs:
+	./validation/check-same-output.sh input-data/paragraphs.xml tasks/paragraphs-*
 
-.PHONY: all check-env validation validation-expenses
+.PHONY: all check-env validation validation-expenses validation-paragraphs
