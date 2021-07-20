@@ -10,15 +10,13 @@ function main () {
   input_data=$1
   shift
 
-	for task_name in ${@:-tasks/expenses-*} ; do
+	for task_name in "$@"; do
 		check_output_xslt $task_name $input_data
 		check_output_js $task_name $input_data
 
 		check_output_xslt_pipeline $task_name $input_data
 		check_output_js_pipeline $task_name $input_data
 	done
-
-	# TODO other tasks
 }
 
 function check_output_xslt () {
