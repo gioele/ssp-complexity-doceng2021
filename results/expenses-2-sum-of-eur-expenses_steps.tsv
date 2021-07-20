@@ -1,0 +1,5 @@
+STEP_NAME	CYC_COMPLEXITY
+tasks/expenses-2-sum-of-eur-expenses/step-01-add-default-currency.xsl.js	2
+tasks/expenses-2-sum-of-eur-expenses/step-02-normalize-currency.xsl.js	1
+tasks/expenses-2-sum-of-eur-expenses/step-03-select-all-paid-in-eur.xsl.js	2
+tasks/expenses-2-sum-of-eur-expenses/step-04-sum-expenses.xsl.js	1

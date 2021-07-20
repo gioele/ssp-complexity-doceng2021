@@ -1,0 +1,7 @@
+STEP_NAME	CYC_COMPLEXITY
+tasks/expenses-5-big-spenders/step-01-add-default-currency.xsl.js	2
+tasks/expenses-5-big-spenders/step-02-normalize-currency.xsl.js	1
+tasks/expenses-5-big-spenders/step-03-add-eur-value-attr-to-eur-expenses.xsl.js	2
+tasks/expenses-5-big-spenders/step-04-add-eur-value-attr-to-usd-expenses.xsl.js	2
+tasks/expenses-5-big-spenders/step-05-select-big-expenses.xsl.js	2
+tasks/expenses-5-big-spenders/step-06-lookup-big-spenders.xsl.js	2

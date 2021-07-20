@@ -1,0 +1,4 @@
+STEP_NAME	CYC_COMPLEXITY
+tasks/paragraphs-2-count-after-joining/step-01-join-words.xsl.js	4
+tasks/paragraphs-2-count-after-joining/step-02-calculate-length.xsl.js	1
+tasks/paragraphs-2-count-after-joining/step-03-count-long-words.xsl.js	2

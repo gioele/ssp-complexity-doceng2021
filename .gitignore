@@ -1,5 +1,4 @@
 *.swp
-/results/*.tsv
 /.idea/
 node_modules
 /tools/saxon*

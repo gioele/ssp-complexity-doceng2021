@@ -1,0 +1,4 @@
+STEP_NAME	CYC_COMPLEXITY
+tasks/paragraphs-3-lines-start-with-vowel/step-01-join-words.xsl.js	4
+tasks/paragraphs-3-lines-start-with-vowel/step-02-mark-lines.xsl.js	2
+tasks/paragraphs-3-lines-start-with-vowel/step-03-report-lines.xsl.js	2
