@@ -25,3 +25,24 @@ Abstract:
 > This reduction of complexity is associated with a parallel increase in
 > readability of the resulting code.
 
+
+Folder structure
+----------------
+
+
+* `input-data/`: XML datasets.
+* `results/`: TSV files with the calculated cyclomatic complexities.
+* `tasks/`: A series of analyses implemented implemented in two styles:
+  as a conventional program and as a small-step pipeline.
+* `tools/`: Support tools (Saxon for XSTL; node.js and escomplex for JavaScript)
+* `validation/`: Script to check the equivalence of the source XSLT programs
+  to their converted JavaScript counterparts.
+
+Dependencies
+------------
+
+The XSLT programs require a XSLT 2-compliant engine, for example
+Saxon 10.5 HE.
+
+Running escomplex requires a working node.js (version 16.1).
+We recommend using `nodenv` to set up a suitable environment.
