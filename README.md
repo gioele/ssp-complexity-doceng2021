@@ -46,3 +46,20 @@ Saxon 10.5 HE.
 
 Running escomplex requires a working node.js (version 16.1).
 We recommend using `nodenv` to set up a suitable environment.
+
+Instructions
+------------
+
+The simplest way to replicate the results is to run Make with no arguments:
+
+    $ make
+
+To run the tasks and validate their output, invoke Make in the following
+way:
+
+    $ make validate
+
+To calculate the cyclomatic complexity of the programs and populate `results/`
+with the tabulated results use:
+
+    $ make results
