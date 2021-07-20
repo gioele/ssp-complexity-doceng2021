@@ -1,0 +1,21 @@
+<expenses>
+	<month id="2020-12">
+		<expense id="1" person="gb" value="10" />
+		<expense id="2" person="gb" value="1000" />
+		<expense id="3" person="ms" value="30" currency="usd" />
+		<expense id="4" person="gb" value="350" currency="EUR"/>
+	</month>
+
+	<month id="2021-01">
+		<expense id="5" person="gb" currency="Eur" value="80" />
+		<expense id="6" person="gb" currency="USD" value="40" />
+		<expense id="7" person="ms" currency="EUR" value="10" />
+		<expense id="8" person="gb" currency="USD" value="105" />
+		<expense id="9" person="ms" value="30" />
+	</month>
+
+	<people>
+		<person id="gb" name="Gioele" />
+		<person id="ms" name="Marcel" />
+	</people>
+</expenses>

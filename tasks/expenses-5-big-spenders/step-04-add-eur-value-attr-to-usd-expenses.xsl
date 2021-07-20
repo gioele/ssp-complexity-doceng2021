@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+    <xsl:output omit-xml-declaration="yes" method="xml"/>
+    <xsl:import href="../common/identity.xsl"/>
+
+    <xsl:variable name="exchangeRate">0.9</xsl:variable>
+
+    <xsl:template match="expense[not(@currency = 'EUR')]">
+        <xsl:copy>
+            <xsl:attribute name="value-in-eur">
+                <xsl:value-of select="@value * $exchangeRate"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="node()|@*"/>
+        </xsl:copy>
+    </xsl:template>
+</xsl:stylesheet>
